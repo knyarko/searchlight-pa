@@ -58,9 +58,17 @@ Paths in the HTML are relative, so the site works both at
   the form composes a `mailto:` message to `Info@mysearchlight.net` instead. Point it at
   a form service (Formspree, Basin, Netlify Forms) by giving the `<form>` an `action`
   and removing the handler in `assets/js/main.js`.
-- **Hero slideshow.** The original's slides come from a Wix gallery widget that loads
-  its images at runtime; the replica uses the site's own photography for its four slides.
 - **Log In.** Still links out to the real application at `searchlightpa.com`.
+
+## Where the content came from
+
+Wix serves each page's content as a JSON document. The home page's is at
+`https://static.wixstatic.com/sites/f21c41_8164678a74ea2006a495ee7b6620c0fe_68.json.z`
+(plain JSON despite the `.z`), and its `ImageList` holds the hero gallery — the four
+slide images with their titles and descriptions, plus the gallery's own settings
+(5s autoplay, 1s transition, left-aligned title and description), all of which this
+replica matches. The other pages' JSON file names are listed under `pageJsonFileNames`
+in the HTML of any page.
 
 ## Content ownership
 

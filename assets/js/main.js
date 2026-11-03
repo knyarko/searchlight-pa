@@ -29,7 +29,7 @@
 
   function play() {
     stop();
-    timer = setInterval(function () { go(index + 1); }, 6000);
+    timer = setInterval(function () { go(index + 1); }, 5000);
   }
 
   function stop() { clearInterval(timer); }
