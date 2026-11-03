@@ -5,6 +5,12 @@ A static replica of [searchlightpa.net](https://www.searchlightpa.net) — the S
 GitHub Pages. The original is a Wix site; this version has no build step, no framework
 and no runtime dependencies beyond two Google Fonts.
 
+## Two versions
+
+- **Replica** (repository root) — a faithful rebuild of the current Wix site.
+- **[Redesign](redesign/)** (`redesign/`) — a modern editorial take on the same content,
+  served at `/redesign/`. See [redesign/README.md](redesign/README.md).
+
 ## Pages
 
 | File | Original URL |
