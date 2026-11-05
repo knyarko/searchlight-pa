@@ -72,6 +72,47 @@
   });
 })();
 
+// Hero banner. Images, copy and indicators advance together.
+(function () {
+  var banner = document.querySelector('.banner--hero');
+  if (!banner) return;
+
+  var slides = [].slice.call(banner.querySelectorAll('.hero-slide'));
+  var texts = [].slice.call(banner.querySelectorAll('.hero-text'));
+  var dots = [].slice.call(banner.querySelectorAll('.hero-dots button'));
+  if (slides.length < 2) return;
+
+  var index = 0;
+  var timer;
+  var HOLD = 6000;
+
+  function show(next) {
+    index = (next + slides.length) % slides.length;
+    slides.forEach(function (el, i) { el.classList.toggle('is-active', i === index); });
+    texts.forEach(function (el, i) { el.classList.toggle('is-active', i === index); });
+    dots.forEach(function (el, i) {
+      el.setAttribute('aria-selected', String(i === index));
+      // restart the progress fill on the dot that is now current
+      if (i === index) { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; }
+    });
+  }
+
+  function play() { stop(); timer = setInterval(function () { show(index + 1); }, HOLD); }
+  function stop() { clearInterval(timer); }
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () { show(i); play(); });
+  });
+
+  banner.addEventListener('mouseenter', stop);
+  banner.addEventListener('mouseleave', play);
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else play();
+  });
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) play();
+})();
+
 // Consultation form. Static hosting has no backend, so hand off to the mail client.
 (function () {
   var form = document.getElementById('consult');

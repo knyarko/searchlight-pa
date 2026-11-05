@@ -13,15 +13,21 @@ Editorial and institutional, rather than product-led SaaS. The buyer is a provos
 an IR director or an accreditation liaison, and the content is prose-heavy; a
 typographic system carries that better than feature cards, and dates more slowly.
 
+Full-bleed imagery carries the top of every page, which is the thing the original
+did well. The signature is the **beam**: a soft shaft of warm light raking across a
+darkened photograph, with a trace of grain over it. A company called SearchLight
+should own that, and it keeps the banners from looking like stock-photo headers.
+
 **What changed, and why**
 
 | Original (2016 Wix) | Here |
 | --- | --- |
-| Auto-rotating hero carousel, 4 slides | One hero with a single statement and one call to action |
+| Hero carousel with translucent caption boxes | Full-bleed hero, same 4 slides and captions, type set straight on the image, 6s crossfade with a Ken Burns drift |
+| Flat banner images on inner pages | Full-bleed banners with the beam treatment, type overlaid |
 | 14px Arial body, 40px light centred headings | Fluid scale, 17px Inter body, Source Serif 4 display |
 | Everything centred in alternating colour bands | Asymmetric grid — a sticky section heading beside the prose |
 | Navy rounded cards over the hero | Three editorial columns, rules instead of boxes |
-| Stock photos of people at laptops | Same photos, duotoned to brand so they stop reading as stock |
+| Stock photos of people at laptops | In sections, duotoned to brand; in banners, darkened and raked with the beam |
 | The drill-down described only in prose | An actual diagram: outcome → criteria → instrument |
 | Light only | Light and dark, following the system, with a toggle that remembers |
 
@@ -51,8 +57,8 @@ public:
 1. **Section headings** — "Reports that assemble themselves", "Follow a number back
    to the question that produced it", and so on. Each paraphrases the paragraph
    directly beneath it; the original used the bare labels ("Automated Reporting").
-2. **The hero** — headline condensed from the About page's vision statement, standfirst
-   from the home page's SOLUTIONS card.
+2. **The hero** — the four slides carry the original gallery's own titles and descriptions,
+   unchanged. The "Every number keeps a trail" section below it uses the SOLUTIONS card copy.
 3. **The example scorecard and drill-down diagram** — illustrative sample values, labelled
    as such on the page. They are not real institutional data.
 
