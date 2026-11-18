@@ -63,3 +63,11 @@
       '&body=' + encodeURIComponent(body);
   });
 })();
+
+// Keep the copyright year current without a build step. The markup carries the
+// year the page was published, so this only has to correct it after a new one.
+(function () {
+  var year = String(new Date().getFullYear());
+  var nodes = document.querySelectorAll('.js-year');
+  for (var i = 0; i < nodes.length; i++) nodes[i].textContent = year;
+})();

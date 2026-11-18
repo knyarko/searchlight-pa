@@ -65,4 +65,3 @@ public:
 ## Still to do
 
 - The contact form still hands off to `mailto:`; same as the replica.
-- `© 2018` is carried over verbatim from the original footer and is worth updating.

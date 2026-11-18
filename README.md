@@ -63,6 +63,10 @@ Paths in the HTML are relative, so the site works both at
 
 ## Differences from the original
 
+- **Copyright year.** The original footer reads `© 2018`. All three versions now
+  print the current year instead: the markup carries the year it was published, and a
+  few lines of JS correct it once a new year starts, so it never goes stale. This is a
+  deliberate departure from the replica's otherwise verbatim reproduction.
 - **Contact form.** The Wix form posted to Wix's backend. GitHub Pages is static, so
   the form composes a `mailto:` message to `Info@mysearchlight.net` instead. Point it at
   a form service (Formspree, Basin, Netlify Forms) by giving the `<form>` an `action`
