@@ -10,6 +10,9 @@ and no runtime dependencies beyond two Google Fonts.
 - **Replica** (repository root) — a faithful rebuild of the current Wix site.
 - **[Redesign](redesign/)** (`redesign/`) — a modern editorial take on the same content,
   served at `/redesign/`. See [redesign/README.md](redesign/README.md).
+- **[Prototype](prototype/)** (`prototype/`) — a home page whose hero is the product's own
+  performance review chart instead of a photograph, built from real data in the product
+  deck. See [prototype/README.md](prototype/README.md).
 
 ## Pages
 

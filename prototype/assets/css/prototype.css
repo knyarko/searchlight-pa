@@ -1,0 +1,302 @@
+/* Prototype: the hero visual is the product's own Performance Review.
+   Scale, outcomes and distributions are SearchLight's real ones, taken from
+   the Performance Review slides in the product deck. */
+
+:root {
+  /* the four-point scale, in the product's own order and meaning */
+  --s1: #b4442f;  /* 1 Unacceptable */
+  --s2: #d4952a;  /* 2 Needs improvement */
+  --s3: #3f6d9c;  /* 3 Meets expectation */
+  --s4: #2f7d62;  /* 4 Exceeds expectation */
+  --threshold: #c0503a;
+}
+
+:root[data-theme="dark"] {
+  --s1: #d4624a;
+  --s2: #e5ad48;
+  --s3: #6693c2;
+  --s4: #4aa184;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --s1: #d4624a;
+    --s2: #e5ad48;
+    --s3: #6693c2;
+    --s4: #4aa184;
+  }
+}
+
+/* ---------------------------------------------------------- hero */
+
+.evidence-hero { padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 5vw, 3.5rem); }
+
+.evidence-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  align-items: center;
+}
+
+.evidence-hero h1 {
+  font-size: var(--step-4);
+  margin-block: 1.1rem .9rem;
+}
+.evidence-hero h1 em { font-style: italic; color: var(--accent); }
+.evidence-hero .lead { max-width: 46ch; }
+
+.evidence-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ---------------------------------------------------------- performance review figure */
+
+.perf {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: clamp(1.25rem, 2.6vw, 1.75rem);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 5%, transparent),
+              0 22px 60px -34px color-mix(in srgb, var(--ink) 45%, transparent);
+}
+
+.perf__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.perf__head h2 {
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  margin: 0;
+}
+.perf__scope {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.perf__plot {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: .5rem;
+  margin-top: 1.5rem;
+}
+
+.perf__scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 232px;
+  font-size: .68rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+  text-align: right;
+  padding-right: .3rem;
+}
+
+.perf__area { position: relative; }
+
+.perf__rules {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 232px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.perf__rules span { display: block; border-top: 1px solid var(--line-soft); }
+
+/* the product draws a threshold line on this chart; 25% is its default */
+.perf__threshold {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(232px * .75);
+  border-top: 1.5px dashed var(--threshold);
+  pointer-events: none;
+}
+.perf__threshold span {
+  position: absolute;
+  right: 0;
+  top: -.55rem;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--threshold);
+  background: var(--surface);
+  padding-inline: .3rem;
+}
+
+.perf__cols {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(.5rem, 1.6vw, 1rem);
+}
+
+.perf__col { display: flex; flex-direction: column; }
+
+.perf__stack {
+  height: 232px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.perf__stack span {
+  display: block;
+  height: calc(var(--h) * 1%);
+  transition: filter .18s var(--ease);
+}
+.perf__stack .s1 { background: var(--s1); }
+.perf__stack .s2 { background: var(--s2); }
+.perf__stack .s3 { background: var(--s3); }
+.perf__stack .s4 { background: var(--s4); }
+.perf__col:hover .perf__stack span { filter: saturate(1.25); }
+
+.perf__key {
+  margin-top: .6rem;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+.perf__key i { font-style: normal; }
+.perf__key b {
+  display: block;
+  font-family: var(--serif);
+  font-size: var(--step-0);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.perf__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem 1.1rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--line-soft);
+  font-size: .72rem;
+  color: var(--ink-soft);
+}
+.perf__legend li { display: flex; align-items: center; gap: .4rem; }
+.perf__legend i {
+  width: .6rem;
+  height: .6rem;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+.perf__legend .l1 { background: var(--s1); }
+.perf__legend .l2 { background: var(--s2); }
+.perf__legend .l3 { background: var(--s3); }
+.perf__legend .l4 { background: var(--s4); }
+
+.perf__foot {
+  margin-top: 1rem;
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+}
+.perf__foot b { color: var(--ink); font-weight: 600; }
+
+/* ---------------------------------------------------------- FCAR card */
+
+.fcar {
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fcar__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .4rem 1rem;
+  padding: 1rem clamp(1rem, 2.4vw, 1.5rem);
+  background: var(--paper-sunk);
+  border-bottom: 1px solid var(--line-soft);
+}
+.fcar__bar h3 { font-family: var(--serif); font-size: var(--step-0); margin: 0; }
+.fcar__bar span { font-size: .7rem; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-faint); }
+
+.fcar__body { padding: clamp(1rem, 2.4vw, 1.5rem); display: grid; gap: 1.4rem; }
+
+.fcar__block h4 {
+  font-family: var(--sans);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .7rem;
+}
+
+.grades { display: flex; gap: .3rem; }
+.grades div { flex: 1; text-align: center; }
+.grades b {
+  display: block;
+  font-size: .66rem;
+  color: var(--ink-faint);
+  font-weight: 600;
+  letter-spacing: .06em;
+}
+.grades span {
+  display: block;
+  margin-top: .25rem;
+  padding: .35rem 0;
+  border-radius: 3px;
+  background: var(--paper-sunk);
+  font-size: var(--step--1);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.grades div:last-child span { background: color-mix(in srgb, var(--accent) 18%, var(--surface)); }
+
+.criteria { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+.criteria th {
+  text-align: right;
+  font-size: .66rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 600;
+  padding-bottom: .5rem;
+}
+.criteria th:first-child { text-align: left; }
+.criteria td { padding: .5rem 0; border-top: 1px solid var(--line-soft); vertical-align: top; }
+.criteria td + td { text-align: right; width: 2.6rem; font-variant-numeric: tabular-nums; }
+.criteria tbody tr:hover td { background: var(--paper-sunk); }
+.criteria .code { color: var(--accent); font-weight: 600; }
+.criteria tfoot td { border-top: 1.5px solid var(--line); font-weight: 600; }
+
+/* ---------------------------------------------------------- responsive */
+
+@media (max-width: 1000px) {
+  .evidence-hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 560px) {
+  .perf__scale, .perf__rules, .perf__stack { height: 190px; }
+  /* four outcome names will not fit across a phone — the keys carry it */
+  .perf__key i { display: none; }
+  .perf__threshold { top: calc(190px * .75); }
+  .criteria td + td { width: 2.1rem; }
+}
