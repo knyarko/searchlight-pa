@@ -193,6 +193,7 @@ a { color: inherit; }
   border-radius: var(--radius);
   border: 1px solid transparent;
   text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
   transition: background .18s var(--ease), border-color .18s var(--ease), color .18s var(--ease);
 }
@@ -753,7 +754,7 @@ a { color: inherit; }
   .drill__join { justify-self: center; rotate: 90deg; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   :root { --head-h: 62px; }
   .burger { display: grid; place-items: center; }
   .nav {
@@ -813,7 +814,7 @@ a { color: inherit; }
 .split__media .duo { aspect-ratio: 4 / 3; }
 .split__media .duo--tall { aspect-ratio: 1 / 1; }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   /* the header has to hold a wordmark, a toggle and a burger — drop the rest */
   .wordmark i { display: none; }
   .head-tools .btn--solid { display: none; }
@@ -823,7 +824,7 @@ a { color: inherit; }
 }
 
 .nav__cta { display: none; }
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .nav__cta { display: block; }
   .nav__cta a { color: var(--accent); font-weight: 600; }
 }
@@ -1056,7 +1057,7 @@ a { color: inherit; }
 .band-image blockquote em { font-style: italic; color: var(--accent-lit); }
 .band-image .eyebrow { color: var(--accent-lit); margin-bottom: 1.2rem; }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .banner--hero { min-height: clamp(480px, 76vh, 640px); }
   .banner__text, .banner--hero .banner__text { max-width: none; }
   .hero-dots button { width: 2.2rem; }
@@ -1077,7 +1078,13 @@ a { color: inherit; }
 
 .nav__login { display: none; }
 
-@media (max-width: 760px) {
+/* the header carries one more item than it used to; the wordmark's strapline
+   is the first thing that can go when it gets tight */
+@media (max-width: 1080px) {
+  .wordmark i { display: none; }
+}
+
+@media (max-width: 900px) {
   /* no room beside the wordmark and the burger — it moves into the nav panel */
   .head-tools .login { display: none; }
   .nav__login { display: block; }
